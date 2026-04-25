@@ -110,7 +110,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 6rem 2rem;
+  padding: 3rem 1.5rem;
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
@@ -125,7 +125,7 @@ a:hover {
 
 .section-container.full-width {
   max-width: 100% !important;
-  padding: 6rem 5%;
+  padding: 3rem 4%;
 }
 
 .section-container.visible {

@@ -60,14 +60,14 @@
 .two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 2.5rem;
   align-items: center;
 }
 
 .two-col-reverse {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 2.5rem;
   align-items: center;
 }
 
@@ -243,8 +243,8 @@
 
 .lab-section {
   background-color: var(--color-bg-alt);
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
   /* Operational Manual Trigger */
@@ -373,7 +373,7 @@
     top: 0;
     left: 0;
     right: 0;
-    padding: 1.5rem 3rem;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -633,7 +633,7 @@
   margin: 0 auto;
   background: var(--color-bg);
   border-radius: 24px;
-  padding: 3rem;
+  padding: 1.5rem;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.05);
   border: 1px solid var(--color-border);
 }
