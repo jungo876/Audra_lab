@@ -133,8 +133,8 @@ export default function UploadZone({ onAnalyze }) {
             <span className="file-size">{(selectedFile.size / (1024 * 1024)).toFixed(2)} MB</span>
           </div>
 
-          <div className="inquiry-container" style={{ margin: '2rem 0', width: '100%' }}>
-            <div className="tactical-label" style={{ marginBottom: '0.75rem', fontSize: '0.75rem', letterSpacing: '0.15em' }}>FORENSIC_OBJECTIVE</div>
+          <div className="inquiry-container" style={{ margin: '1rem 0', width: '100%' }}>
+            <div className="tactical-label" style={{ marginBottom: '0.5rem', fontSize: '0.7rem', letterSpacing: '0.15em' }}>FORENSIC_OBJECTIVE</div>
             <input 
               type="text" 
               placeholder="e.g. 'How many calories?' or 'Is this real?'" 
@@ -145,7 +145,7 @@ export default function UploadZone({ onAnalyze }) {
                 background: 'rgba(0,0,0,0.05)',
                 border: '1px solid var(--color-border)',
                 borderRadius: '12px',
-                padding: '1.25rem',
+                padding: '0.75rem 1.25rem',
                 color: 'var(--color-text)',
                 fontFamily: 'Inter, sans-serif',
                 fontSize: '1rem',
