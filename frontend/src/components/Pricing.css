@@ -1,0 +1,151 @@
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  width: 100%;
+  margin-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.pricing-card {
+  padding: 4rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: var(--color-primary);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card.highlighted {
+  border: 2px solid var(--color-primary);
+  background: var(--color-bg);
+  box-shadow: 0 20px 40px rgba(0, 255, 136, 0.05);
+}
+
+.pricing-card.highlighted::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: 1.5rem;
+  right: -2rem;
+  background: var(--color-primary);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding: 0.4rem 3rem;
+  transform: rotate(45deg);
+  font-family: 'Share Tech Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+.card-header h3 {
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem 0;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.price-container {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.price {
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+}
+
+.period {
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.card-header p {
+  color: var(--color-text);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  min-height: 60px;
+}
+
+.card-features {
+  flex-grow: 1;
+  margin-bottom: 3rem;
+}
+
+.card-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-features li {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.check-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.pricing-btn {
+  width: 100%;
+  padding: 1.25rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pricing-btn.primary {
+  background: var(--color-primary);
+  color: #000;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+}
+
+.pricing-btn.primary:hover {
+  background: #00ff88;
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(0, 255, 136, 0.3);
+}
+
+.pricing-btn.secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 1.5px solid var(--color-border);
+}
+
+.pricing-btn.secondary:hover {
+  background: var(--color-bg-alt);
+  border-color: var(--color-text);
+  transform: translateY(-2px);
+}

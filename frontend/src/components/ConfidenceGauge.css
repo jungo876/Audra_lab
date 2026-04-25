@@ -1,0 +1,55 @@
+.confidence-gauge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.gauge-svg-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gauge-svg-container svg {
+  transform: rotate(-90deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.gauge-background {
+  fill: none;
+  stroke: var(--color-border);
+}
+
+.gauge-progress {
+  fill: none;
+  stroke-linecap: round;
+  /* Removed glow for cleaner minimal look */
+}
+
+.gauge-text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.score {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.percent {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 0.125rem;
+}

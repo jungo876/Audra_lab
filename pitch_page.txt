@@ -1,0 +1,133 @@
+AUDRA LABS: HACKATHON PITCH STRATEGY (3-MINUTE SCRIPT)
+==========================================================
+
+1. THE HOOK (0:00 - 0:45)
+---------------------------
+WHAT TO SAY:
+"In the last 12 months, deepfake attacks have increased by 900%.
+Seeing is no longer believing. A single synthetic video can collapse
+a market or swing an election. The world needs a forensic defense system."
+
+WHAT TO SHOW ON SCREEN:
+>> SCROLL TO: "The Threat" section on landing page
+>> POINT AT: The animated glitch box visual on the right side
+>> OPTIONAL: Open the intelligence feed to show ALERT logs scrolling
+
+---
+
+2. THE SOLUTION (0:45 - 1:30)
+--------------------------------
+WHAT TO SAY:
+"Meet Audra Labs. We are not just another detector. We are a
+Zero-Knowledge Forensic Intelligence Platform. We give journalists
+and newsrooms a military-grade terminal to unmask manipulation in seconds."
+
+WHAT TO SHOW ON SCREEN:
+>> SCROLL UP TO: Landing hero — show the "Audra Labs" title with ScanSearch icon
+>> SCROLL DOWN TO: "Step 01: Ingest" — show the forensic photo on the left
+>> SCROLL TO: "Step 02: Analyze" — show the live scanning beam moving over the image
+>> SCROLL TO: "Step 03: The Verdict" — show the tilted Forensic Verdict card with 94.8%
+
+---
+
+3. THE TECHNICAL EDGE (1:30 - 2:15)
+--------------------------------------
+WHAT TO SAY:
+"Our intelligence engine uses multi-modal reasoning with Gemini 1.5 Pro
+to detect Error Level Analysis (ELA) and lighting vector deviations.
+The real killer feature? ZERO-LEAK PRIVACY.
+We process everything in volatile memory. We never store your investigative data."
+
+WHAT TO SHOW ON SCREEN:
+>> CLICK: MENU button (top right) → open Operational Manual sidebar
+>> POINT AT: "02: Data Security & Privacy" and the "Zero-Leak Policy" section
+>> CLOSE: the sidebar
+>> SCROLL TO: "Global Scale" section — point at the rotating city images (NYC/London/Tokyo)
+>> SAY: "This is a live feed of global media hubs we monitor."
+
+---
+
+4. THE LIVE DEMO (2:15 - 2:45)
+---------------------------------
+WHAT TO SAY:
+"Let me show you this live."
+
+WHAT TO DO ON SCREEN (DEMO OPERATIVE — MEMBER 3):
+>> SCROLL TO: "Interactive Lab" section
+>> DRAG & DROP any image into the upload zone (prepare an image in advance!)
+>> POINT AT: The file name + size shown at bottom of preview card
+>> CLICK: "RUN FORENSIC ANALYSIS" button (big green button, black text)
+>> WATCH: The terminal logs appear one by one — point at them: "See it scanning..."
+>> RESULT APPEARS: Point at the Verdict (MANIPULATED or VERIFIED), Confidence Score, and Techniques list
+
+---
+
+5. THE CLOSING (2:45 - 3:00)
+--------------------------------
+WHAT TO SAY:
+"Audra Labs is the defensive layer for truth.
+In a world where AI can fabricate reality, we ensure
+that truth remains verifiable. We are four operatives,
+and we are ready to defend the information ecosystem.
+We are Audra Labs. Thank you."
+
+WHAT TO SHOW ON SCREEN:
+>> SCROLL TO: The final CTA section — "Ready for the truth?" with the ShieldCheck icon glowing
+
+==========================================================
+TEAM ROLES (4 MEMBERS)
+
+MEMBER 1 (THE LEAD):
+ - Says: The Hook, The Solution, and The Closing
+ - Stands front-center during the presentation
+
+MEMBER 2 (THE TECH):
+ - Says: The Technical Edge section
+ - Explains ELA, Gemini, LPU scaling when judges ask
+
+MEMBER 3 (THE DEMO PILOT):
+ - Controls the laptop during the Live Demo
+ - Practices the drag-drop 5 times before the pitch
+
+MEMBER 4 (THE SECURITY):
+ - Handles Q&A on Privacy and Zero-Leak Policy
+ - Points at the Operational Manual sidebar during pitch
+
+==========================================================
+JUDGES' Q&A CHEAT SHEET
+
+Q: How is this different from other deepfake detectors?
+A: We focus on PRIVACY FIRST. Journalists won't upload sensitive
+   leaks to a platform that stores data. Our Zero-Knowledge architecture
+   solves the trust gap that existing tools miss.
+
+Q: How do you handle high-resolution video?
+A: We use LPU (Language Processing Units) for high-throughput frame
+   sampling. Zero latency even on 4K inputs.
+
+Q: How do you know if it's a deepfake vs. just low quality?
+A: Our engine distinguishes between natural 'Compression Noise' and
+   'Generative Artifacts' (synthetic patterns) using ELA.
+
+Q: Is this scalable for newsrooms?
+A: Yes. Serverless architecture. Thousands of images per hour with
+   zero latency degradation. Look at the Global Scale section.
+
+Q: Why is it called Audra?
+A: Audra means 'Storm' in Old Norse. We are the calm intelligence
+   inside the misinformation storm.
+
+==========================================================
+PRE-PITCH CHECKLIST
+
+[ ] Practice the Demo 5 times (drag, drop, analyze, show result)
+[ ] Prepare 2-3 images in advance (save to Desktop for easy access)
+[ ] Make sure the app is running: npm run dev in /frontend
+[ ] Set theme to LIGHT MODE (already default)
+[ ] Clear localStorage so login screen appears fresh if needed
+[ ] Open Operational Manual at least once to show documentation
+[ ] Make sure internet is available (images load from Unsplash CDN)
+[ ] Close all other tabs before presenting
+
+==========================================================
+BUILT FOR HACKATHON-007 | TEAM: AUDRA LABS

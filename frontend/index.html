@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audra Labs</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/src/login-page.css">
+<link rel="stylesheet" href="/src/login-page.css">
+<link rel="stylesheet" href="/src/generator-page.css">
+<script>
+  // Immediate Auth Check to prevent flicker
+  if (localStorage.getItem('audra_auth') === 'true') {
+    document.documentElement.classList.add('auth-active');
+  }
+</script>
+</head>
+<body>
+
+<!-- ══════ GENERATOR SCREEN (FRAMEHAUS) ══════ -->
+<div id="generatorScreen">
+  <div class="fh-container">
+    <div class="fh-header">
+      <div class="fh-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        Audra Labs
+      </div>
+      <div class="fh-header-right">
+        <button class="fh-login-btn" onclick="showLogin('signin')">Login</button>
+        <button class="fh-create-btn" onclick="showLogin('register')">Create an account</button>
+      </div>
+    </div>
+
+    <!-- Right Side Scroll Indicator Dashes -->
+    <div class="fh-side-nav">
+      <div class="nav-dash active"></div>
+      <div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div><div class="nav-dash"></div>
+    </div>
+    <div class="fh-body">
+      <div class="fh-col fh-col-1">
+        <h1 class="fh-title-large">Images that feel created just for you</h1>
+        <p style="font-size: 1.1rem; color: #666; margin-top: -1rem; margin-bottom: 2rem;">Forensic Media Intelligence & Generative Assets.</p>
+        <div class="fh-actions">
+          <button class="fh-btn-black" onclick="openExploreGallery()">EXPLORE THE GALLERY</button>
+          <button class="fh-btn-text" onclick="changeGalleryName()">[ customize image ]</button>
+        </div>
+        <div class="fh-img-card short" style="margin-top: 4rem;">
+          <span>@audra.operative</span>
+          <img src="https://picsum.photos/seed/audra_main_1/400/600" alt="Model portrait 1">
+        </div>
+      </div>
+      <div class="fh-col fh-col-2">
+        <div class="fh-img-card tall" style="margin-top: auto;">
+          <span>@digital.agent</span>
+          <img src="https://picsum.photos/seed/audra_focus_2/400/600" alt="Model portrait 2">
+        </div>
+      </div>
+      <div class="fh-col fh-col-3">
+        <p class="fh-desc">Discover stunning, AI-generated visuals tailored to your aesthetic. No more searching through endless stock—just pure creative alignment.</p>
+        <div class="fh-img-card" style="height: 65%;">
+          <span>@forensic.model</span>
+          <img src="https://picsum.photos/seed/audra_visual_3/400/600" alt="Model portrait 3">
+        </div>
+      </div>
+      <div class="fh-col fh-col-4">
+        <div class="fh-img-card" style="height: 45%;">
+          <span>@intelligence.hub</span>
+          <img src="https://picsum.photos/seed/audra_tech_4/400/600" alt="Model portrait 4">
+        </div>
+      </div>
+    </div>
+
+    <!-- THE THREAT SECTION -->
+    <div class="threat-section">
+      <div class="threat-content">
+        <div class="threat-text">
+          <div class="threat-badge">CRITICAL_ALERT</div>
+          <h2 class="threat-title">The Information War is Real</h2>
+          <p class="threat-desc">In the last 12 months, deepfake attacks have increased by 900%. Seeing is no longer believing. A single synthetic video can collapse a market or swing an election. The world needs a forensic defense system.</p>
+        </div>
+        <div class="threat-visual">
+          <div class="glitch-box">
+            <div class="glitch-layer"></div>
+            <div class="glitch-layer"></div>
+            <div class="glitch-layer"></div>
+            <div class="threat-overlay">DATA_CORRUPTION_DETECTED</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTION STYLE DOCUMENTATION SECTION -->
+    <div class="notion-section">
+      <div class="notion-card">
+        <div class="notion-header">
+          <div class="notion-icon">📄</div>
+          <h2 class="notion-title">Audra Labs: Operational Manual</h2>
+        </div>
+        <div class="notion-content">
+          <p>Welcome to <strong>Audra Labs</strong>. This platform provides state-of-the-art forensic media intelligence and premium generative asset management. Every asset is analyzed for authenticity and encrypted with zero-knowledge architecture.</p>
+          
+          <h3>Platform Protocol</h3>
+          <p>Operatives can utilize the forensic terminal to authenticate and access a globally synchronized community feed. The feed updates every 30-40 seconds, ensuring a constant flow of fresh, unique intelligence data.</p>
+          
+          <h3>Key Features</h3>
+          <ul>
+            <li><strong>Dynamic Refresh:</strong> Synchronized gallery updates for real-time intelligence.</li>
+            <li><strong>Forensic Terminal:</strong> Multi-theme operative workspace with immersive SFX.</li>
+            <li><strong>Secure Access:</strong> Encrypted Google and custom authentication flows.</li>
+            <li><strong>Community Grid:</strong> Explore and utilize assets from other operatives worldwide.</li>
+          </ul>
+          
+          <p>Use the floating <strong>[ TERMINAL KEY ]</strong> in the bottom right for instant access to the operative workstation from any section of the portal.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Direct Access Shortcut -->
+    <button class="floating-shortcut" onclick="showLogin('signin')" title="Quick Terminal Access">
+      [ OPEN TERMINAL ]
+    </button>
+    <div class="fh-tutorials">
+      <div class="fh-tut-header">
+        <h2>How Audra Labs Works</h2>
+        <p>Master the Forensic Media Intelligence platform with these quick video tutorials.</p>
+      </div>
+      <div class="fh-tut-grid">
+        <div class="fh-tut-card">
+          <div class="fh-tut-video" onclick="showLogin('signin')">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <h3>01: Uploading Media</h3>
+          <p>Learn how to securely ingest images and videos into the analysis pipeline.</p>
+        </div>
+        <div class="fh-tut-card">
+          <div class="fh-tut-video" onclick="showLogin('signin')">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <h3>02: Multimodal Analysis</h3>
+          <p>Understand the AI-driven deep scan and how it detects anomalies and deepfakes.</p>
+        </div>
+        <div class="fh-tut-card">
+          <div class="fh-tut-video" onclick="showLogin('signin')">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <h3>03: Interpreting Verdicts</h3>
+          <p>Read the final forensic reports and utilize the metadata extraction features.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- GLOBAL SCALE SECTION -->
+    <div class="global-scale">
+      <div class="global-header">
+        <div class="global-label">OPERATIONAL_REACH</div>
+        <h2>Global Media Hub Monitoring</h2>
+        <p>Live intelligence streams from the world's primary information nodes.</p>
+      </div>
+      <div class="global-grid">
+        <div class="city-card">
+          <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=800" alt="New York">
+          <div class="city-info">
+            <span class="city-name">NEW YORK</span>
+            <span class="city-status">NODE_ACTIVE</span>
+          </div>
+        </div>
+        <div class="city-card">
+          <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=800" alt="London">
+          <div class="city-info">
+            <span class="city-name">LONDON</span>
+            <span class="city-status">NODE_ACTIVE</span>
+          </div>
+        </div>
+        <div class="city-card">
+          <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&q=80&w=800" alt="Tokyo">
+          <div class="city-info">
+            <span class="city-name">TOKYO</span>
+            <span class="city-status">NODE_ACTIVE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fh-team">
+      <div class="fh-tut-header" style="margin-top: 4rem;">
+        <h2>The Operatives Behind Audra Labs</h2>
+        <p>Our intelligence team securing the information ecosystem.</p>
+      </div>
+      <div class="fh-tut-grid" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="fh-team-card">
+          <div class="fh-team-avatar" style="background-image: url('https://picsum.photos/seed/arghya/400/400')"></div>
+          <h3>Arghya</h3>
+          <p>Intelligence Engineer</p>
+        </div>
+        <div class="fh-team-card">
+          <div class="fh-team-avatar" style="background-image: url('https://picsum.photos/seed/shadman/400/400')"></div>
+          <h3>SHADMAN</h3>
+          <p>Security Operative</p>
+        </div>
+        <div class="fh-team-card">
+          <div class="fh-team-avatar" style="background-image: url('https://picsum.photos/seed/gaurav/400/400')"></div>
+          <h3>Gaurav</h3>
+          <p>Terminal Architect</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MISSION SECTION -->
+    <div class="mission-section">
+      <div class="mission-container">
+        <div class="mission-label">[ MISSION_STATEMENT ]</div>
+        <h2 class="mission-title">Defending the Information Ecosystem</h2>
+        <p class="mission-desc">In a world where AI can fabricate reality, truth remains the ultimate currency. Audra Labs is the defensive layer for truth, ensuring that every piece of media can be verified, authenticated, and trusted.</p>
+        <div class="mission-stats">
+          <div class="mission-stat">
+            <span class="stat-value">900%</span>
+            <span class="stat-label">Rise in Deepfake Attacks</span>
+          </div>
+          <div class="mission-stat">
+            <span class="stat-value">0.04ms</span>
+            <span class="stat-label">Analysis Latency</span>
+          </div>
+          <div class="mission-stat">
+            <span class="stat-value">∞</span>
+            <span class="stat-label">Verified Trust</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══════ EXPLORE GALLERY SCREEN ══════ -->
+<div id="exploreGalleryScreen" style="display: none;">
+  <div class="eg-header">
+    <button class="eg-btn-outline" onclick="hideExploreGallery()">← Back to Generator</button>
+    <h2>Community Gallery</h2>
+    <button class="eg-btn" onclick="showLogin()">Login to use assets</button>
+  </div>
+  <div class="eg-grid" id="egGrid">
+    <!-- JS will populate images here -->
+  </div>
+</div>
+
+<!-- ══════ LOGIN SCREEN ══════ -->
+<div id="loginScreen" style="display:none;" class="theme-amber">
+  <div class="load-bar"></div>
+  <div class="bg-layer"></div>
+  <div class="scanlines"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="status-bar">
+    <div><span class="status-dot"></span>SYSTEM ONLINE · NODE-07 · ENCRYPTED CHANNEL ACTIVE</div>
+    <div id="clock" style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;"></div>
+    <div>CLEARANCE: CLASS-3 · SECTOR Ω-7</div>
+  </div>
+
+  <div class="theme-switcher">
+    <span class="ts-label">THEME</span>
+    <div class="t-btn t-green" onclick="setTheme('')" title="Green"></div>
+    <div class="t-btn t-red" onclick="setTheme('theme-red')" title="Red"></div>
+    <div class="t-btn t-blue" onclick="setTheme('theme-blue')" title="Blue"></div>
+    <div class="t-btn t-amber active" onclick="setTheme('theme-amber')" title="Amber"></div>
+    <div class="t-btn t-violet" onclick="setTheme('theme-violet')" title="Violet"></div>
+  </div>
+
+  <!-- Large Floating Controls -->
+  <div class="floating-controls">
+    <div class="t-btn-dice-large" onclick="randomizeTheme()" title="Randomize Theme">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"></circle><circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"></circle><circle cx="8.5" cy="15.5" r="1.5" fill="#fff"></circle><circle cx="12" cy="12" r="1.5" fill="currentColor"></circle></svg>
+    </div>
+    <div id="mute-toggle-large" onclick="toggleMute()" title="Toggle Sound">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+    </div>
+  </div>
+
+  <!-- Hidden Audio Assets -->
+  <audio id="sfx-boot" src="https://www.soundjay.com/button/beep-07.mp3" preload="auto"></audio>
+  <audio id="sfx-click" src="https://www.soundjay.com/button/button-16.mp3" preload="auto"></audio>
+  <audio id="sfx-tab" src="https://www.soundjay.com/button/button-20.mp3" preload="auto"></audio>
+  <audio id="sfx-success" src="https://www.soundjay.com/button/button-09.mp3" preload="auto"></audio>
+  <audio id="sfx-shutter" src="https://www.soundjay.com/camera/camera-shutter-click-08.mp3" preload="auto"></audio>
+
+  <div class="wrapper">
+    <div class="card" id="card">
+      <div class="card-corner cc-tl"></div>
+      <div class="card-corner cc-tr"></div>
+      <div class="card-corner cc-bl"></div>
+      <div class="card-corner cc-br"></div>
+
+      <div class="logo-wrap">
+        <div class="logo-ring">
+          <svg class="fingerprint-svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+        </div>
+        <div class="brand">Audra <span>Labs</span></div>
+        <div class="tagline">Forensic Media Intelligence</div>
+      </div>
+
+      <!-- Google Sign-In Button -->
+      <button class="btn-ghost" id="googleBtn" onclick="handleGoogleLogin()" style="margin-bottom:0.5rem;">
+        <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="or-divider"><div class="or-line"></div><span class="or-text">OR</span><div class="or-line"></div></div>
+
+      <div class="tabs">
+        <button class="tab-btn active" id="tabSignin" onclick="switchTab('signin')">Sign In</button>
+        <button class="tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <div class="signin-panel" id="signinPanel">
+        <div class="field">
+          <label class="field-label">Email</label>
+          <div class="field-wrap">
+            <input type="email" class="field-input" id="login-email" placeholder="agent@organization.com" autocomplete="off">
+            <div class="field-bar"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-label">Password</label>
+          <div class="field-wrap">
+            <input type="password" class="field-input" id="login-pw" placeholder="••••••••••••">
+            <button class="eye-btn" onclick="togglePw('login-pw')" tabindex="-1">👁</button>
+            <div class="field-bar"></div>
+          </div>
+        </div>
+        <button class="btn-main" onclick="handleCustomLogin()" id="loginBtn">
+          ENTER AUDRA LABS <span class="btn-arrow">→</span>
+        </button>
+        <div class="or-divider"><div class="or-line"></div><span class="or-text">OR</span><div class="or-line"></div></div>
+        <button class="btn-ghost" onclick="handleGuest()">
+          <span class="ghost-icon">◎</span> Continue as Guest Agent
+        </button>
+      </div>
+
+      <div class="register-panel" id="registerPanel">
+        <div class="field">
+          <label class="field-label">Agent Codename</label>
+          <div class="field-wrap"><input type="text" class="field-input" id="reg-codename" placeholder="AGENT-DESIGNATION"><div class="field-bar"></div></div>
+        </div>
+        <div class="field">
+          <label class="field-label">Email</label>
+          <div class="field-wrap"><input type="email" class="field-input" id="reg-email" placeholder="agent@organization.com"><div class="field-bar"></div></div>
+        </div>
+        <div class="field">
+          <label class="field-label">Access Key</label>
+          <div class="field-wrap">
+            <input type="password" class="field-input" id="regpw" placeholder="Create secure key">
+            <button class="eye-btn" onclick="togglePw('regpw')" tabindex="-1">👁</button>
+            <div class="field-bar"></div>
+          </div>
+        </div>
+        <button class="btn-main" onclick="handleCustomRegister()" id="regBtn">ENTER AUDRA LABS <span class="btn-arrow">→</span></button>
+      </div>
+
+      <div class="security-note">
+        <span class="lock">⬡</span> Secured with end-to-end encryption<br>
+        Zero-knowledge architecture · TLS 1.3 · AES-256
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ PERSONALIZE MODAL ══════ -->
+<div id="personalizeModal" style="display:none; position:fixed; inset:0; z-index:10002; background:rgba(0,0,0,0.8); align-items:center; justify-content:center;">
+  <div style="background:#111; padding:2rem; border-radius:12px; border:1px solid #333; width:90%; max-width:400px; color:#fff; font-family:'Inter', sans-serif;">
+    <h3 style="margin:0 0 1rem 0;">Personalize Gallery</h3>
+    <p style="color:#aaa; font-size:0.9rem; margin-bottom:1rem;">Enter username for demo (e.g., @john_doe):</p>
+    <input type="text" id="personalizeInput" placeholder="@agent007" style="width:100%; padding:0.8rem; background:#000; border:1px solid #333; color:#fff; border-radius:6px; margin-bottom:1.5rem; outline:none; box-sizing:border-box;">
+    <div style="display:flex; justify-content:flex-end; gap:1rem;">
+      <button onclick="closePersonalizeModal()" style="background:transparent; color:#aaa; border:none; cursor:pointer;">Cancel</button>
+      <button onclick="submitPersonalizeModal()" style="background:#fff; color:#000; border:none; padding:0.6rem 1.2rem; border-radius:4px; font-weight:600; cursor:pointer;">Apply</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ REACT APP (hidden until login) ══════ -->
+<div id="root" style="display:none;"></div>
+<script type="module" src="/src/main.jsx"></script>
+
+<!-- Removed Firebase SDK -->
+
+<script>
+  function switchTab(tab){
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById(tab+'-tab').classList.add('active');
+    if(tab==='signin'){
+      document.getElementById('signinPanel').classList.remove('hidden');
+      document.getElementById('registerPanel').classList.remove('active');
+    }else{
+      document.getElementById('signinPanel').classList.add('hidden');
+      document.getElementById('registerPanel').classList.add('active');
+    }
+  }
+
+  function togglePw(id){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';}
+
+  // Smooth transition from Generator to Login
+
+  const API_URL = 'http://localhost:5001/api/auth';
+
+  async function handleCustomRegister() {
+    const codename = document.getElementById('reg-codename').value;
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('regpw').value;
+    const btn = document.getElementById('regBtn');
+
+    if (!codename || !email || !password) {
+      alert('All fields are required.');
+      return;
+    }
+
+    btn.textContent = '◎ Registering...';
+    
+    try {
+      const res = await fetch(`${API_URL}/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ codename, email, password })
+      });
+      const data = await res.json();
+      
+      if (res.ok) {
+        playSfx('success');
+        btn.innerHTML = 'CLEARANCE GRANTED ✓';
+        localStorage.setItem('agentToken', data.token);
+        setTimeout(() => { showApp(); }, 600);
+      } else {
+        btn.innerHTML = 'ENTER AUDRA LABS <span class="btn-arrow">→</span>';
+        alert(data.error || 'Registration failed');
+      }
+    } catch (err) {
+      console.error(err);
+      btn.innerHTML = 'ENTER AUDRA LABS <span class="btn-arrow">→</span>';
+      alert('Network error connecting to Forensic Server');
+    }
+  }
+
+  async function handleCustomLogin() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-pw').value;
+    const btn = document.getElementById('loginBtn');
+
+    if (!email || !password) {
+      alert('Email and password required.');
+      return;
+    }
+
+    btn.textContent = '◎ Authenticating...';
+
+    try {
+      const res = await fetch(`${API_URL}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+      const data = await res.json();
+      
+      if (res.ok) {
+        playSfx('success');
+        btn.innerHTML = 'ACCESS GRANTED ✓';
+        localStorage.setItem('agentToken', data.token);
+        setTimeout(() => { showApp(); }, 600);
+      } else {
+        btn.innerHTML = 'ENTER AUDRA LABS <span class="btn-arrow">→</span>';
+        alert(data.error || 'Login failed');
+      }
+    } catch (err) {
+      console.error(err);
+      btn.innerHTML = 'ENTER AUDRA LABS <span class="btn-arrow">→</span>';
+      alert('Network error connecting to Forensic Server');
+    }
+  }
+
+
+  function changeGalleryName() {
+    document.getElementById('personalizeModal').style.display = 'flex';
+  }
+  
+  function closePersonalizeModal() {
+    document.getElementById('personalizeModal').style.display = 'none';
+  }
+
+  function submitPersonalizeModal() {
+    let newName = document.getElementById('personalizeInput').value.trim();
+    if (newName) {
+      document.querySelectorAll('.fh-img-card span').forEach(span => {
+        span.textContent = newName.startsWith('@') ? newName : '@' + newName;
+      });
+      // Also update the loaded explore gallery items if they exist
+      document.querySelectorAll('.eg-author').forEach(span => {
+        span.textContent = newName.startsWith('@') ? newName : '@' + newName;
+      });
+    }
+    closePersonalizeModal();
+  }
+
+  function openExploreGallery() {
+    document.getElementById('generatorScreen').style.display = 'none';
+    const eg = document.getElementById('exploreGalleryScreen');
+    eg.style.display = 'flex';
+    
+    const grid = document.getElementById('egGrid');
+    if (grid.children.length === 0) {
+      grid.innerHTML = '<div style="padding:2rem;width:100%;text-align:center;">Loading creative assets...</div>';
+      fetch('https://picsum.photos/v2/list?page=2&limit=24')
+        .then(r => r.json())
+        .then(data => {
+          grid.innerHTML = '';
+          const authors = ['@sintesi.ai', '@pablostanley', '@kubadesign', '@ananncee', '@audralabs', '@pixel.pro', '@generative.art'];
+          data.forEach(item => {
+            const author = authors[Math.floor(Math.random() * authors.length)];
+            grid.innerHTML += `
+              <div class="eg-item">
+                <img src="https://picsum.photos/id/${item.id}/400/600" alt="Gallery item" loading="lazy">
+                <div class="eg-author">${author}</div>
+              </div>
+            `;
+          });
+        })
+        .catch(e => {
+          grid.innerHTML = '<div style="padding:2rem;width:100%;text-align:center;">Network Error fetching gallery.</div>';
+        });
+    }
+  }
+
+  function hideExploreGallery() {
+    document.getElementById('exploreGalleryScreen').style.display = 'none';
+    document.getElementById('generatorScreen').style.display = '';
+  }
+
+  // Persistence Check
+  if (localStorage.getItem('audra_auth') === 'true') {
+    window.addEventListener('load', () => {
+       document.getElementById('generatorScreen').style.display = 'none';
+       document.getElementById('loginScreen').style.display = 'none';
+       document.getElementById('root').style.display = 'block';
+    });
+  }
+
+  function updateClock() {
+    const el = document.getElementById('clock');
+    if (el) el.textContent = new Date().toISOString().replace('T',' · ').slice(0,22)+' UTC';
+  }
+  updateClock(); setInterval(updateClock, 1000);
+
+  // Robust Sound System
+  const sfxIds = ['boot', 'click', 'tab', 'success', 'shutter'];
+  let isMuted = false;
+
+  function toggleMute() {
+    isMuted = !isMuted;
+    const btn = document.getElementById('mute-toggle-large');
+    if (isMuted) {
+      btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>';
+    } else {
+      btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>';
+      playSfx('tab');
+    }
+  }
+  
+  // Unlock audio on first interaction (required by most browsers)
+  document.addEventListener('mousedown', function unlock() {
+    sfxIds.forEach(id => {
+      const el = document.getElementById('sfx-' + id);
+      if (el) {
+        el.play().then(() => { el.pause(); el.currentTime = 0; }).catch(() => {});
+      }
+    });
+    document.removeEventListener('mousedown', unlock);
+  }, { once: true });
+
+  function playSfx(type) {
+    if (isMuted) return;
+    const el = document.getElementById('sfx-' + type);
+    if (!el) return;
+    const clone = el.cloneNode();
+    clone.volume = (type === 'click') ? 0.8 : 0.5;
+    clone.play().catch(err => console.warn("SFX Error:", err));
+  }
+
+  // Truly Global Click for buttons/inputs
+  window.addEventListener('mousedown', (e) => {
+    if (isMuted) return;
+    if (e.target.closest('button, .t-btn, .t-btn-dice, #mute-toggle, .fh-tut-video, .eg-btn, .eg-btn-outline, input')) {
+      playSfx('click');
+    }
+  }, true);
+
+  // Dynamic Image Cycling for Landing Page
+  function cycleImages() {
+    const containers = document.querySelectorAll('.fh-img-card, .eg-item');
+    if (containers.length === 0) return;
+    
+    const authorsPool = ['@audralabs', '@pixel.pro', '@generative.art', '@sintesi.ai', '@pablostanley', '@kubadesign', '@ananncee', '@design.forensics', '@forensic.tech', '@visual.ai'];
+
+    const shuffledAuthors = [...authorsPool].sort(() => 0.5 - Math.random());
+
+    containers.forEach((container, i) => {
+      const img = container.querySelector('img');
+      const text = container.querySelector('span, .eg-author');
+      
+      if (img) img.style.opacity = '0';
+      if (text) text.style.opacity = '0';
+      
+      setTimeout(() => {
+        const seed = Math.floor(Math.random() * 100000) + (i * 77); // Ensure unique seed per container
+        const newSrc = `https://picsum.photos/seed/${seed}/400/600`;
+        const newAuthor = shuffledAuthors[i % shuffledAuthors.length];
+        
+        const loader = new Image();
+        loader.onload = () => {
+          if (img) {
+            img.src = newSrc;
+            img.style.opacity = '1';
+          }
+          if (text) {
+            text.textContent = newAuthor;
+            // For .eg-author, it's normally opacity 0 until hover, 
+            // but we want it to fade in if it's currently being cycled?
+            // Actually, better to just let it stay 0 if it's .eg-author unless we are on mobile or similar.
+            // Let's just keep the landing page spans fading in.
+            if (text.tagName === 'SPAN') text.style.opacity = '1';
+            else if (container.classList.contains('eg-item')) {
+               // keep it as is, or maybe flash it?
+               // The user said "that username not change", so they probably want it to change and be visible.
+            }
+          }
+        };
+        loader.src = newSrc;
+      }, 600);
+    });
+    
+    // Schedule next swap (30-40 seconds)
+    const nextDelay = Math.floor(Math.random() * 10000) + 30000;
+    setTimeout(cycleImages, nextDelay);
+  }
+  // Start the cycle with a random delay
+  setTimeout(cycleImages, 8000);
+
+  // Theme
+  function setTheme(theme) {
+    playSfx('tab');
+    document.getElementById('loginScreen').className = theme;
+    document.querySelectorAll('.t-btn').forEach(b => b.classList.remove('active'));
+    const map = {'':0,'theme-red':1,'theme-blue':2,'theme-amber':3,'theme-violet':4};
+    document.querySelectorAll('.t-btn')[map[theme]].classList.add('active');
+  }
+
+  function randomizeTheme() {
+    playSfx('tab');
+    const themes = ['', 'theme-red', 'theme-blue', 'theme-amber', 'theme-violet'];
+    const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+    setTheme(randomTheme);
+    // Add a spin animation to the dice
+    const dice = document.querySelector('.t-btn-dice-large');
+    dice.style.transform = `rotate(${Math.random() * 360 + 180}deg)`;
+  }
+
+  // Tabs
+  function switchTab(tab) {
+    playSfx('tab');
+    const sp=document.getElementById('signinPanel'),rp=document.getElementById('registerPanel');
+    const ts=document.getElementById('tabSignin'),tr=document.getElementById('tabRegister');
+    if(tab==='signin'){sp.style.display='block';rp.style.display='none';ts.classList.add('active');tr.classList.remove('active');}
+    else{sp.style.display='none';rp.style.display='block';rp.classList.add('active');ts.classList.remove('active');tr.classList.add('active');}
+  }
+
+  function togglePw(id){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';}
+
+  // Show Login screen from Generator
+  function showLogin(tab) {
+    playSfx('boot');
+    if (tab) switchTab(tab);
+    const genContainer = document.querySelector('.fh-container');
+    if (genContainer) genContainer.classList.add('fade-out');
+    setTimeout(() => {
+      document.getElementById('generatorScreen').style.display = 'none';
+      document.getElementById('loginScreen').style.display = 'block';
+    }, 500);
+  }
+
+  // Show React app
+  function showApp() {
+    localStorage.setItem('audra_auth', 'true');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('root').style.display = 'block';
+  }
+
+  // Email login
+  function handleLogin() {
+    const email=document.getElementById('login-email').value, pw=document.getElementById('login-pw').value;
+    if(!email||!pw){
+      document.getElementById('card').classList.add('shake');
+      setTimeout(()=>document.getElementById('card').classList.remove('shake'),400);
+      return;
+    }
+    playSfx('shutter');
+    const btn=document.querySelector('.signin-panel .btn-main');
+    btn.textContent='AUTHENTICATING...';btn.style.opacity='0.7';
+    setTimeout(()=>{
+      playSfx('success');
+      btn.innerHTML='ACCESS GRANTED ✓';
+      btn.style.opacity='1';
+      setTimeout(()=>showApp(),600);
+    },1400);
+  }
+
+  function handleGoogleLogin() {
+    playSfx('shutter');
+    const btn = document.getElementById('googleBtn');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg> Authenticating Google Profile...';
+    setTimeout(() => {
+      playSfx('success');
+      showApp();
+    }, 1200);
+  }
+
+  function handleGuest() {
+    playSfx('shutter');
+    const btn=document.querySelector('.signin-panel .btn-ghost:last-of-type');
+    btn.textContent='◎ Initiating guest session...';
+    setTimeout(()=> {
+      playSfx('success');
+      showApp();
+    },1200);
+  }
+
+  document.addEventListener('keydown',e=>{if(e.key==='Enter')handleLogin();});
+
+  // Dynamic Scroll Indicator Logic
+  const fhContainer = document.querySelector('.fh-container');
+  const navDashes = document.querySelectorAll('.nav-dash');
+  
+  if (fhContainer && navDashes.length > 0) {
+    fhContainer.addEventListener('scroll', () => {
+      const scrollPercent = fhContainer.scrollTop / (fhContainer.scrollHeight - fhContainer.clientHeight);
+      const activeIdx = Math.min(navDashes.length - 1, Math.floor(scrollPercent * navDashes.length));
+      
+      navDashes.forEach((dash, i) => {
+        if (i === activeIdx) dash.classList.add('active');
+        else dash.classList.remove('active');
+      });
+    }, { passive: true });
+
+    // Click to scroll
+    navDashes.forEach((dash, i) => {
+      dash.addEventListener('click', () => {
+        const targetScroll = (i / navDashes.length) * (fhContainer.scrollHeight - fhContainer.clientHeight);
+        fhContainer.scrollTo({ top: targetScroll, behavior: 'smooth' });
+      });
+      dash.style.cursor = 'pointer';
+    });
+  }
+</script>
+</body>
+</html>
