@@ -28,6 +28,15 @@ const tiers = [
     features: ['Dedicated forensic clusters', 'Custom AI logic tuning', 'Mission-critical SLAs', '24/7 tactical support'],
     buttonText: 'Contact Command',
     highlighted: false
+  },
+  {
+    name: 'Enterprise API',
+    price: 'Volume',
+    period: '/per scan',
+    description: 'High-throughput API for food delivery and scale platforms (Revenue share model).',
+    features: ['Infinite scalability', 'Per-transaction billing', 'Webhook integration', 'Custom ML deployment'],
+    buttonText: 'Request API Access',
+    highlighted: false
   }
 ];
 
