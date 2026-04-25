@@ -510,10 +510,33 @@ export default function LandingPage({ toolComponent, history = [], loadHistoryIt
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className="text-subtitle mt-2"
-            style={{ fontWeight: '400', color: 'var(--color-text-muted)', fontSize: '1.4rem' }}
+            style={{ fontWeight: '400', color: 'var(--color-text-muted)', fontSize: '1.4rem', marginBottom: '2.5rem' }}
           >
             {taglines[taglineIdx]}
           </motion.p>
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            onClick={() => document.getElementById('section-08').scrollIntoView({ behavior: 'smooth' })}
+            className="primary-btn-premium"
+            style={{
+              padding: '1.25rem 3rem',
+              fontSize: '1.1rem',
+              fontWeight: '900',
+              fontFamily: 'Share Tech Mono',
+              letterSpacing: '0.1em',
+              background: 'var(--color-primary)',
+              color: 'var(--color-bg)',
+              border: 'none',
+              borderRadius: '50px',
+              cursor: 'pointer',
+              boxShadow: '0 20px 40px rgba(var(--color-primary-rgb), 0.3)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+          >
+            DEPLOY FORENSIC LAB
+          </motion.button>
         </motion.div>
       </SectionWrapper>
 
@@ -982,13 +1005,47 @@ export default function LandingPage({ toolComponent, history = [], loadHistoryIt
                     e.currentTarget.style.filter = 'none';
                   }}
                 >
-                  AGREE
+                  CONFIRM SIGN OUT
                 </button>
               </div>
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+      {/* Revenue Model Section */}
+      <SectionWrapper className={`section-centered bg-alt ${isFullWidth ? 'full-width' : ''}`} id="section-revenue" style={{ padding: '6rem 2rem' }}>
+        <div className="tactical-label">STRATEGIC_REVENUE_ENGINE</div>
+        <h2 className="text-title" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Operational Scale</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', maxWidth: '1200px', margin: '0 auto', textAlign: 'left' }}>
+          <div className="premium-card" style={{ padding: '2.5rem' }}>
+            <h3 style={{ color: 'var(--color-primary)', fontFamily: 'Share Tech Mono', marginBottom: '1rem' }}>01. Per-Scan API</h3>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
+              Designed for high-frequency platforms. We operate on a transaction-based model similar to food-delivery APIs, charging per verification event.
+            </p>
+          </div>
+          <div className="premium-card" style={{ padding: '2.5rem' }}>
+            <h3 style={{ color: 'var(--color-primary)', fontFamily: 'Share Tech Mono', marginBottom: '1rem' }}>02. Revenue Share</h3>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
+              Partner with major newsrooms to provide forensic insurance. We take a percentage of the content-protection budget for guaranteed verification uptime.
+            </p>
+          </div>
+          <div className="premium-card" style={{ padding: '2.5rem' }}>
+            <h3 style={{ color: 'var(--color-primary)', fontFamily: 'Share Tech Mono', marginBottom: '1rem' }}>03. Tactical Support</h3>
+            <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
+              On-demand human-in-the-loop forensic experts for mission-critical verdicts. Billed as an hourly high-performance forensic consultant.
+            </p>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Footer */}
+      <footer style={{ padding: '4rem 2rem', borderTop: '1px solid rgba(var(--color-text-rgb), 0.1)', textAlign: 'center', background: 'var(--color-bg)' }}>
+        <ScanSearch size={32} color="var(--color-primary)" style={{ marginBottom: '1rem' }} />
+        <div style={{ fontFamily: 'Share Tech Mono', letterSpacing: '0.2em', fontWeight: '900', color: 'var(--color-text)', marginBottom: '1rem' }}>AUDRA_LABS // v2.0.4</div>
+        <div style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', maxWidth: '600px', margin: '0 auto' }}>
+          Developed for the Global Information Integrity Hackathon. Built on PyTorch XceptionNet backbones. All rights reserved.
+        </div>
+      </footer>
     </div>
   );
 }
