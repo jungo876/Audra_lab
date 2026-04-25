@@ -198,8 +198,64 @@ function App() {
     <div className="live-tool">
       <div className="main-content-area">
         {!mediaUrl && !isAnalyzing && (
-          <div className="fade-in">
+          <div className="fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
             <UploadZone onAnalyze={handleAnalyze} />
+            
+            {/* Image History Display right below Upload Box */}
+            {history.length > 0 && (
+              <div className="history-inline-section mt-8" style={{ width: '100%', marginTop: '6rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
+                  <h3 style={{ fontSize: '1.5rem', fontWeight: 900, letterSpacing: '0.05em', color: 'var(--color-primary)' }}>RECENT_ANALYSIS_ARCHIVES</h3>
+                  <button onClick={() => {
+                    setHistory([]);
+                    localStorage.removeItem('audra_history');
+                  }} style={{ background: 'transparent', border: '1px solid var(--color-danger)', color: 'var(--color-danger)', padding: '0.4rem 1rem', borderRadius: '8px', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 800 }}>
+                    CLEAR_ARCHIVES
+                  </button>
+                </div>
+                
+                <div className="history-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
+                  {history.map(item => (
+                    <div key={item.id} className="history-card premium-card" style={{ 
+                      position: 'relative', overflow: 'hidden', background: 'var(--card-bg)', 
+                      borderRadius: '16px', border: '1px solid var(--color-border)',
+                      display: 'flex', flexDirection: 'column'
+                    }}>
+                      <div style={{ position: 'relative', width: '100%', height: '160px', overflow: 'hidden', cursor: 'pointer' }} onClick={() => loadHistoryItem(item)}>
+                        <img src={item.thumbnail} alt="Analysis thumbnail" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(0.3)' }} />
+                        <div style={{
+                          position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.6)',
+                          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                          opacity: 0, transition: 'all 0.3s ease', gap: '0.5rem'
+                        }}
+                        onMouseOver={(e) => e.currentTarget.style.opacity = 1}
+                        onMouseOut={(e) => e.currentTarget.style.opacity = 0}
+                        >
+                          <span style={{ fontSize: '0.8rem', fontWeight: '900', color: 'var(--color-primary)', letterSpacing: '0.1em' }}>VIEW REPORT</span>
+                        </div>
+                      </div>
+                      
+                      <div className="history-info" style={{ padding: '1.25rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+                          <span style={{
+                            padding: '0.3rem 0.6rem', borderRadius: '6px', fontSize: '0.7rem', fontWeight: 900,
+                            backgroundColor: item.verdict === 'FAKE' ? 'rgba(255, 59, 48, 0.1)' : item.verdict === 'REAL' ? 'rgba(52, 199, 89, 0.1)' : 'rgba(255, 149, 0, 0.1)',
+                            color: item.verdict === 'FAKE' ? 'var(--color-danger)' : item.verdict === 'REAL' ? 'var(--color-success)' : 'var(--color-warning)',
+                            border: `1px solid ${item.verdict === 'FAKE' ? 'rgba(255, 59, 48, 0.2)' : item.verdict === 'REAL' ? 'rgba(52, 199, 89, 0.2)' : 'rgba(255, 149, 0, 0.2)'}`
+                          }}>
+                            {item.verdict === 'FAKE' ? '❌ FAKE' : item.verdict === 'REAL' ? '✅ REAL' : '⚠️ SUSPICIOUS'}
+                          </span>
+                          <span style={{ fontFamily: 'Share Tech Mono', fontSize: '1.1rem', fontWeight: 900, color: 'var(--color-primary)' }}>{Math.round(item.score)}%</span>
+                        </div>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', fontWeight: '700', marginTop: '0.5rem' }}>
+                          {formatHistoryDate(item.date)}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         )}
         {(isAnalyzing || result) && (
