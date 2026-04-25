@@ -957,15 +957,15 @@ export default function LandingPage({ toolComponent, history = [], loadHistoryIt
                 >
                   CANCEL
                 </button>
-                <button 
-                  onClick={handleSignOut}
-                  style={{ 
-                    flex: 1.5, 
-                    padding: '1.25rem', 
-                    background: 'var(--color-primary)', 
-                    border: 'none', 
-                    color: '#000', // High contrast black text on bright primary
-                    borderRadius: '14px', 
+                  <button 
+                    onClick={handleSignOut}
+                    style={{ 
+                      flex: 1.5, 
+                      padding: '1.25rem', 
+                      background: 'var(--color-primary)', 
+                      border: 'none', 
+                      color: 'var(--color-bg)', // Dynamic text color for proper contrast across themes
+                      borderRadius: '14px', 
                     cursor: 'pointer', 
                     fontFamily: 'Share Tech Mono', 
                     fontWeight: '900', 
