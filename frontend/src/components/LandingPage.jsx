@@ -238,229 +238,229 @@ export default function LandingPage({ toolComponent, history = [], loadHistoryIt
             </div>
 
             <AnimatePresence>
-              {isUserMenuOpen && (
-                <motion.div 
-                  className="user-tactical-dropdown"
-                  initial={{ opacity: 0, y: 15, scale: 0.98 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 15, scale: 0.98 }}
-                  style={{
-                    position: 'absolute',
-                    top: '100%',
-                    right: 0,
-                    marginTop: '1.5rem',
-                    width: '420px',
-                    background: 'rgba(34, 34, 36, 0.75)', 
-                    backdropFilter: 'blur(40px) saturate(180%)',
-                    WebkitBackdropFilter: 'blur(40px) saturate(180%)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    borderRadius: '32px',
-                    padding: '3rem 2rem',
-                    zIndex: 99999,
-                    boxShadow: '0 50px 120px rgba(0,0,0,0.4)',
-                    transformOrigin: 'top right'
-                  }}
-                >
-                  <div className="operative-identity-section" style={{ padding: '0 0.5rem 1.5rem 0.5rem', borderBottom: '1px solid rgba(var(--color-text-rgb), 0.1)', marginBottom: '1.5rem' }}>
-                    <input 
-                      type="text" 
-                      value={userDisplayName} 
-                      onChange={handleNameChange}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                          e.target.blur(); // Triggers save and visual commit
-                        }
-                      }}
-                      style={{ 
-                        fontSize: '1.8rem', 
-                        fontWeight: '900', 
-                        color: '#ffffff', 
-                        fontFamily: 'Share Tech Mono', 
-                        background: 'rgba(255, 255, 255, 0.05)', 
-                        border: 'none', 
-                        borderBottom: '2px dashed rgba(255, 255, 255, 0.3)',
-                        width: '100%',
-                        outline: 'none',
-                        marginBottom: '0.5rem',
-                        padding: '0.5rem 0.75rem',
-                        borderRadius: '8px'
-                      }}
-                      title="Press Enter to Save Tactical Callsign"
-                    />
-                    <div style={{ 
-                      fontSize: '0.9rem', 
-                      color: '#00c853', 
-                      fontFamily: 'Inter, sans-serif', 
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem',
-                      marginTop: '0.5rem',
-                      fontWeight: '600'
-                    }}>
-                      <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#00c853' }}></div>
-                      User Online
-                    </div>
-                  </div>
-
-                  <div className="dropdown-label" style={{ fontSize: '1.2rem', color: '#ffffff', padding: '0 0.5rem 1.5rem 0.5rem', fontFamily: 'Share Tech Mono', letterSpacing: '0.1em', fontWeight: '900', textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', marginBottom: '1.5rem' }}>MISSION_CONTROL</div>
-                  
-                  <div className="weather-toggles" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '2rem' }}>
-                    {[
-                      { id: 'sun', label: 'SUNLIGHT' },
-                      { id: 'rain', label: 'RAIN_FX' },
-                      { id: 'snow', label: 'SNOWFALL' }
-                    ].map(mode => (
-                      <button 
-                        key={mode.id}
-                        onClick={() => setWeatherConfig(prev => ({ ...prev, [mode.id]: !prev[mode.id] }))}
-                        style={{ 
-                          fontSize: '0.85rem', 
-                          padding: '1rem 0.5rem', 
-                          background: weatherConfig[mode.id] ? 'var(--color-primary)' : 'rgba(255,255,255,0.05)', 
-                          border: weatherConfig[mode.id] ? '1px solid var(--color-primary)' : '1px solid rgba(255,255,255,0.1)',
-                          color: weatherConfig[mode.id] ? 'var(--color-bg)' : '#ffffff', 
-                          borderRadius: '12px', 
-                          cursor: 'pointer', 
-                          fontFamily: 'Inter, sans-serif', 
-                          fontWeight: '800',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '0.4rem',
-                          transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                      >
-                        {mode.label}
-                      </button>
-                    ))}
-                  </div>
-                    
-                    {/* Hacker Mode Switch */}
-                    <div 
-                      onClick={() => {
-                        const newTheme = theme === 'hacker' ? 'dark' : 'hacker';
-                        setTheme(newTheme);
-                        document.documentElement.setAttribute('data-theme', newTheme);
-                        localStorage.setItem('audra_theme', newTheme);
-                      }}
-                      style={{ 
-                        gridColumn: 'span 2',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '1.15rem', 
-                        background: theme === 'hacker' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255,255,255,0.03)', 
-                        borderRadius: '20px', 
-                        cursor: 'pointer', 
-                        transition: 'all 0.3s ease',
-                        marginTop: '0.4rem',
-                        border: theme === 'hacker' ? '1px solid #00ff88' : '1px solid rgba(255,255,255,0.05)'
-                      }}
-                    >
-                      <span style={{ fontSize: '1rem', color: theme === 'hacker' ? '#00ff88' : '#ffffff', fontWeight: '800', fontFamily: 'Share Tech Mono', letterSpacing: '0.05em' }}>
-                        HACKER_MODE
-                      </span>
-                      
-                      <div style={{ 
-                        width: '52px', 
-                        height: '28px', 
-                        background: theme === 'hacker' ? '#00ff88' : 'rgba(255,255,255,0.1)', 
-                        borderRadius: '25px', 
-                        position: 'relative',
-                        transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-                        padding: '4px'
-                      }}>
-                        <div style={{ 
-                          width: '20px', 
-                          height: '20px', 
-                          background: '#ffffff', 
-                          borderRadius: '50%', 
-                          position: 'absolute',
-                          left: theme === 'hacker' ? '28px' : '4px',
-                          transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-                          boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
-                        }} />
-                      </div>
-                    </div>
-
-                    <div 
-                      onClick={() => setIsFullWidth(!isFullWidth)}
-                      style={{ 
-                        gridColumn: 'span 2',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        padding: '1.15rem', 
-                        background: 'rgba(255,255,255,0.03)', 
-                        borderRadius: '20px', 
-                        cursor: 'pointer', 
-                        transition: 'all 0.3s ease',
-                        marginTop: '0.4rem',
-                        border: '1px solid rgba(255,255,255,0.05)'
-                      }}
-                    >
-                      <span style={{ fontSize: '1rem', color: isFullWidth ? 'var(--color-primary)' : '#ffffff', fontWeight: '800', fontFamily: 'Share Tech Mono', letterSpacing: '0.05em' }}>
-                        VIEWPORT: {isFullWidth ? 'FULL' : 'NORMAL'}
-                      </span>
-                      
-                      <div style={{ 
-                        width: '52px', 
-                        height: '28px', 
-                        background: isFullWidth ? 'var(--color-primary)' : 'rgba(255,255,255,0.1)', 
-                        borderRadius: '25px', 
-                        position: 'relative',
-                        transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-                        padding: '4px'
-                      }}>
-                        <div style={{ 
-                          width: '20px', 
-                          height: '20px', 
-                          background: '#ffffff', 
-                          borderRadius: '50%', 
-                          position: 'absolute',
-                          left: isFullWidth ? '28px' : '4px',
-                          transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-                          boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
-                        }} />
-                      </div>
-                    </div>
-                  
-                  
-                  <div style={{ height: '1px', background: 'rgba(var(--color-text-rgb), 0.1)', margin: '1.5rem 0' }}></div>
-                  
-                  <button 
-                    className="dropdown-item-tactical logout" 
-                    onClick={() => {
-                      setIsUserMenuOpen(false);
-                      setIsLogoutConfirmOpen(true);
-                    }}
-                    style={{ 
-                      justifyContent: 'center', 
-                      marginTop: '2rem', 
-                      marginBottom: '1rem',
-                      padding: '1rem 1.5rem',
-                      background: 'transparent', 
-                      border: '1px solid #ff3b30', 
-                      fontWeight: '900', 
-                      color: '#ff3b30',
-                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                      borderRadius: '12px'
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 59, 48, 0.15)';
-                      e.currentTarget.style.boxShadow = '0 0 20px rgba(255, 59, 48, 0.3)';
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.background = 'transparent';
-                      e.currentTarget.style.boxShadow = 'none';
-                      e.currentTarget.style.transform = 'translateY(0)';
+              {isUserMenuOpen && <motion.div 
+                    className="user-tactical-dropdown"
+                    initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 15, scale: 0.98 }}
+                    style={{
+                      position: 'absolute',
+                      top: '100%',
+                      right: 0,
+                      marginTop: '1rem',
+                      width: '320px',
+                      maxWidth: '90vw',
+                      background: 'rgba(34, 34, 36, 0.75)', 
+                      backdropFilter: 'blur(40px) saturate(180%)',
+                      WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '20px',
+                      padding: '1.5rem',
+                      zIndex: 99999,
+                      boxShadow: '0 40px 100px rgba(0,0,0,0.3)',
+                      transformOrigin: 'top right'
                     }}
                   >
-                    <LogOut size={18} /> SIGN OUT Audra
-                  </button>
-                </motion.div>
-              )}
+                    <div className="operative-identity-section" style={{ padding: '0 0.5rem 1rem 0.5rem', borderBottom: '1px solid rgba(var(--color-text-rgb), 0.1)', marginBottom: '1rem' }}>
+                      <input 
+                        type="text" 
+                        value={userDisplayName} 
+                        onChange={handleNameChange}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter') {
+                            e.target.blur(); // Triggers save and visual commit
+                          }
+                        }}
+                        style={{ 
+                          fontSize: '1.2rem', 
+                          fontWeight: '900', 
+                          color: '#ffffff', 
+                          fontFamily: 'Share Tech Mono', 
+                          background: 'rgba(255, 255, 255, 0.05)', 
+                          border: 'none', 
+                          borderBottom: '2px dashed rgba(255, 255, 255, 0.3)',
+                          width: '100%',
+                          outline: 'none',
+                          marginBottom: '0.25rem',
+                          padding: '0.4rem 0.5rem',
+                          borderRadius: '6px'
+                        }}
+                        title="Press Enter to Save Tactical Callsign"
+                      />
+                      <div style={{ 
+                        fontSize: '0.8rem', 
+                        color: '#00c853', 
+                        fontFamily: 'Inter, sans-serif', 
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        marginTop: '0.25rem',
+                        fontWeight: '600'
+                      }}>
+                        <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00c853' }}></div>
+                        User Online
+                      </div>
+                    </div>
+
+                    <div className="dropdown-label" style={{ fontSize: '0.9rem', color: '#ffffff', padding: '0 0.5rem 1rem 0.5rem', fontFamily: 'Share Tech Mono', letterSpacing: '0.1em', fontWeight: '900', textAlign: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', marginBottom: '1rem' }}>MISSION_CONTROL</div>
+                    
+                    <div className="weather-toggles" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                      {[
+                        { id: 'sun', label: 'SUNLIGHT' },
+                        { id: 'rain', label: 'RAIN_FX' },
+                        { id: 'snow', label: 'SNOWFALL' }
+                      ].map(mode => (
+                        <button 
+                          key={mode.id}
+                          onClick={() => setWeatherConfig(prev => ({ ...prev, [mode.id]: !prev[mode.id] }))}
+                          style={{ 
+                            fontSize: '0.75rem', 
+                            padding: '0.75rem 0.5rem', 
+                            background: weatherConfig[mode.id] ? 'var(--color-primary)' : 'rgba(255,255,255,0.05)', 
+                            border: weatherConfig[mode.id] ? '1px solid var(--color-primary)' : '1px solid rgba(255,255,255,0.1)',
+                            color: weatherConfig[mode.id] ? 'var(--color-bg)' : '#ffffff', 
+                            borderRadius: '8px', 
+                            cursor: 'pointer', 
+                            fontFamily: 'Inter, sans-serif', 
+                            fontWeight: '800',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '0.3rem',
+                            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)'
+                          }}
+                        >
+                          {mode.label}
+                        </button>
+                      ))}
+                    </div>
+                      
+                      {/* Hacker Mode Switch */}
+                      <div 
+                        onClick={() => {
+                          const newTheme = theme === 'hacker' ? 'dark' : 'hacker';
+                          setTheme(newTheme);
+                          document.documentElement.setAttribute('data-theme', newTheme);
+                          localStorage.setItem('audra_theme', newTheme);
+                        }}
+                        style={{ 
+                          gridColumn: 'span 2',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.85rem 1rem', 
+                          background: theme === 'hacker' ? 'rgba(0, 255, 136, 0.1)' : 'rgba(255,255,255,0.03)', 
+                          borderRadius: '16px', 
+                          cursor: 'pointer', 
+                          transition: 'all 0.3s ease',
+                          marginTop: '0.4rem',
+                          border: theme === 'hacker' ? '1px solid #00ff88' : '1px solid rgba(255,255,255,0.05)'
+                        }}
+                      >
+                        <span style={{ fontSize: '0.85rem', color: theme === 'hacker' ? '#00ff88' : '#ffffff', fontWeight: '800', fontFamily: 'Share Tech Mono', letterSpacing: '0.05em' }}>
+                          HACKER_MODE
+                        </span>
+                        
+                        <div style={{ 
+                          width: '42px', 
+                          height: '24px', 
+                          background: theme === 'hacker' ? '#00ff88' : 'rgba(255,255,255,0.1)', 
+                          borderRadius: '25px', 
+                          position: 'relative',
+                          transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                          padding: '4px'
+                        }}>
+                          <div style={{ 
+                            width: '16px', 
+                            height: '16px', 
+                            background: '#ffffff', 
+                            borderRadius: '50%', 
+                            position: 'absolute',
+                            left: theme === 'hacker' ? '22px' : '4px',
+                            transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+                          }} />
+                        </div>
+                      </div>
+
+                      <div 
+                        onClick={() => setIsFullWidth(!isFullWidth)}
+                        style={{ 
+                          gridColumn: 'span 2',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '0.85rem 1rem', 
+                          background: 'rgba(255,255,255,0.03)', 
+                          borderRadius: '16px', 
+                          cursor: 'pointer', 
+                          transition: 'all 0.3s ease',
+                          marginTop: '0.4rem',
+                          border: '1px solid rgba(255,255,255,0.05)'
+                        }}
+                      >
+                        <span style={{ fontSize: '0.85rem', color: isFullWidth ? 'var(--color-primary)' : '#ffffff', fontWeight: '800', fontFamily: 'Share Tech Mono', letterSpacing: '0.05em' }}>
+                          VIEWPORT: {isFullWidth ? 'FULL' : 'NORMAL'}
+                        </span>
+                        
+                        <div style={{ 
+                          width: '42px', 
+                          height: '24px', 
+                          background: isFullWidth ? 'var(--color-primary)' : 'rgba(255,255,255,0.1)', 
+                          borderRadius: '25px', 
+                          position: 'relative',
+                          transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                          padding: '4px'
+                        }}>
+                          <div style={{ 
+                            width: '16px', 
+                            height: '16px', 
+                            background: '#ffffff', 
+                            borderRadius: '50%', 
+                            position: 'absolute',
+                            left: isFullWidth ? '22px' : '4px',
+                            transition: 'all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+                          }} />
+                        </div>
+                      </div>
+                    
+                    
+                    <div style={{ height: '1px', background: 'rgba(var(--color-text-rgb), 0.1)', margin: '1rem 0' }}></div>
+                    
+                    <button 
+                      className="dropdown-item-tactical logout" 
+                      onClick={() => {
+                        setIsUserMenuOpen(false);
+                        setIsLogoutConfirmOpen(true);
+                      }}
+                      style={{ 
+                        justifyContent: 'center', 
+                        marginTop: '1rem', 
+                        marginBottom: '0.5rem',
+                        padding: '0.75rem 1rem',
+                        background: 'transparent', 
+                        border: '1px solid #ff3b30', 
+                        fontSize: '0.85rem',
+                        fontWeight: '900', 
+                        color: '#ff3b30',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        borderRadius: '10px'
+                      }}
+                      onMouseOver={(e) => {
+                        e.currentTarget.style.background = 'rgba(255, 59, 48, 0.15)';
+                        e.currentTarget.style.boxShadow = '0 0 20px rgba(255, 59, 48, 0.3)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseOut={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.boxShadow = 'none';
+                        e.currentTarget.style.transform = 'translateY(0)';
+                      }}
+                    >
+                      <LogOut size={16} /> SIGN OUT Audra
+                    </button>
+                  </motion.div>}
             </AnimatePresence>
           </div>
         </div>
