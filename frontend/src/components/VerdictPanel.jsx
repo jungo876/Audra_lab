@@ -81,12 +81,18 @@ export default function VerdictPanel({ result }) {
 
   return (
     <div className="verdict-panel">
-      <div className="verdict-header" style={{ borderColor: color }}>
-        <div className="verdict-title">
-          <Icon size={32} color={color} />
+      <div className="verdict-header" style={{ 
+        borderLeft: `6px solid ${color}`,
+        background: 'rgba(var(--color-text-rgb), 0.02)',
+        padding: '1.5rem',
+        borderRadius: '8px 16px 16px 8px',
+        marginBottom: '2rem'
+      }}>
+        <div className="verdict-title" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <Icon size={40} color={color} />
           <div>
-            <h2 style={{ color }}>{text}</h2>
-            <p className="verdict-subtitle">{subtitle}</p>
+            <h2 style={{ color, margin: 0, fontSize: '1.5rem', fontWeight: 900 }}>{text}</h2>
+            <p className="verdict-subtitle" style={{ margin: '0.25rem 0 0', opacity: 0.7, fontSize: '0.9rem' }}>{subtitle}</p>
           </div>
         </div>
       </div>
@@ -104,10 +110,19 @@ export default function VerdictPanel({ result }) {
             <button 
               className={`voice-btn ${isSpeaking ? 'active' : ''}`} 
               onClick={handleListen}
-              style={{ background: isSpeaking ? 'var(--color-danger)' : 'var(--color-primary)', color: '#000' }}
+              style={{ 
+                background: isSpeaking ? 'var(--color-danger)' : 'var(--color-primary)', 
+                color: 'var(--color-bg)',
+                borderRadius: '4px',
+                padding: '0.5rem 1rem',
+                border: 'none',
+                fontWeight: 900,
+                fontSize: '0.7rem',
+                fontFamily: 'Share Tech Mono'
+              }}
             >
-              {isSpeaking ? <X size={14} /> : <Volume2 size={14} />}
-              <span>{isSpeaking ? "MUTE" : "UNMUTE VOICE"}</span>
+              {isSpeaking ? <X size={12} /> : <Volume2 size={12} />}
+              <span>{isSpeaking ? "STOP" : "NARRATE"}</span>
             </button>
           </div>
           <p className="summary-text" style={{ marginBottom: '2.5rem' }}>{summary}</p>

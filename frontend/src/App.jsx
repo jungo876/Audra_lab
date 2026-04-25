@@ -54,7 +54,7 @@ function App() {
       const img = new Image();
       img.onload = () => {
         const canvas = document.createElement('canvas');
-        const MAX_WIDTH = 200;
+        const MAX_WIDTH = 800; // Increased for better history viewing
         const scale = MAX_WIDTH / img.width;
         canvas.width = MAX_WIDTH;
         canvas.height = img.height * scale;
@@ -298,14 +298,48 @@ function App() {
                 </div>
               </div>
             ) : (
-            <div className="results-section fade-in" style={{ padding: '4rem 0', minHeight: '800px' }}>
-              <div className="results-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4rem' }}>
-                <h2 style={{ fontSize: '3rem', fontWeight: 900, letterSpacing: '-0.03em', color: 'var(--color-primary)', textTransform: 'uppercase' }}>FORENSIC_ANALYSIS_COMPLETED</h2>
-                <button className="reset-btn" onClick={handleReset} style={{ padding: '1rem 2.5rem', borderRadius: '16px', background: 'rgba(255,255,255,0.05)', border: '1px solid var(--color-border)', fontWeight: 800, fontSize: '1rem', color: 'var(--color-text)', cursor: 'pointer', letterSpacing: '0.1em' }}>NEW_SCAN</button>
+            <div className="results-section fade-in" style={{ padding: '2rem 0', minHeight: '600px' }}>
+              <div className="results-header" style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'flex-end', 
+                marginBottom: '2.5rem',
+                borderBottom: '2px solid var(--color-primary)',
+                paddingBottom: '1rem'
+              }}>
+                <div>
+                  <div style={{ fontFamily: 'Share Tech Mono', fontSize: '0.7rem', color: 'var(--color-primary)', letterSpacing: '0.3em', marginBottom: '0.5rem' }}>// REPORT_GENERATED_SUCCESSFULLY</div>
+                  <h2 style={{ fontSize: '1.75rem', fontWeight: 900, letterSpacing: '0.05em', color: 'var(--color-text)', textTransform: 'uppercase', margin: 0 }}>FORENSIC_VERDICT</h2>
+                </div>
+                <button className="reset-btn" onClick={handleReset} style={{ 
+                  padding: '0.6rem 1.5rem', 
+                  borderRadius: '4px', 
+                  background: 'var(--color-primary)', 
+                  border: 'none', 
+                  fontWeight: 900, 
+                  fontSize: '0.8rem', 
+                  color: 'var(--color-bg)', 
+                  cursor: 'pointer', 
+                  letterSpacing: '0.15em',
+                  fontFamily: 'Share Tech Mono',
+                  boxShadow: '0 0 20px rgba(var(--color-primary-rgb), 0.3)'
+                }}>NEW_SCAN</button>
               </div>
-              <div className="results-content" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
-                <div className="media-preview-panel premium-card" style={{ borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--color-border)', boxShadow: '0 60px 120px rgba(0,0,0,0.5)', background: '#000', position: 'sticky', top: '2rem' }}>
-                  <img src={mediaUrl} alt="Analyzed media" className="final-preview" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <div className="results-content" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '3rem', alignItems: 'start' }}>
+                <div className="media-preview-panel premium-card" style={{ 
+                  borderRadius: '24px', 
+                  overflow: 'hidden', 
+                  border: '1px solid var(--color-border)', 
+                  boxShadow: '0 40px 80px rgba(0,0,0,0.3)', 
+                  background: '#000', 
+                  position: 'sticky', 
+                  top: '2rem',
+                  minHeight: '400px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <img src={mediaUrl} alt="Analyzed media" className="final-preview" style={{ width: '100%', height: 'auto', maxHeight: '70vh', objectFit: 'contain', display: 'block' }} />
                 </div>
                 <div className="report-data-panel">
                   <VerdictPanel result={result} />
