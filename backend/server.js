@@ -5,6 +5,11 @@ const multer = require('multer');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const Groq = require('groq-sdk');
 const { getForensicPrompt } = require('./forensicPrompt');
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const util = require('util');
+const execPromise = util.promisify(exec);
 
 const app = express();
 const port = process.env.PORT || 5005;
@@ -168,6 +173,31 @@ Respond ONLY with a valid JSON object, no markdown, no extra text:
   };
 }
 
+// ── Local PyTorch Model Analysis (HongguLiu / FaceForensics++) ───────────────
+async function analyzeWithLocalModel(imageBuffer, filename) {
+  // Save buffer to temporary file for Python script to read
+  const tempPath = path.join(__dirname, `temp_${Date.now()}_${filename}`);
+  fs.writeFileSync(tempPath, imageBuffer);
+
+  try {
+    const pythonScript = path.join(__dirname, 'run_local_model.py');
+    const { stdout, stderr } = await execPromise(`python "${pythonScript}" --image "${tempPath}"`);
+    
+    // Cleanup temp file
+    if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
+    
+    if (stderr && !stdout) {
+      console.warn("Python script warning/error:", stderr);
+    }
+    
+    return JSON.parse(stdout.trim());
+  } catch (error) {
+    // Cleanup temp file on crash
+    if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
+    throw error;
+  }
+}
+
 app.post('/api/analyze', upload.single('media'), async (req, res) => {
   try {
     if (!req.file) {
@@ -178,7 +208,19 @@ app.post('/api/analyze', upload.single('media'), async (req, res) => {
     const filename = req.file.originalname;
     console.log(`📂 Analyzing file: ${filename} (${mimeType})`);
 
-    // ── PRIMARY: Try Gemini 1.5 Pro ──────────────────────────────────────────
+    // ── PRIMARY: Try Local PyTorch Model ─────────────────────────────────────
+    // User requested to use HongguLiu/Deepfake-Detection instead of APIs
+    try {
+      console.log('🔍 Attempting Local PyTorch Model analysis...');
+      const parsedJson = await analyzeWithLocalModel(req.file.buffer, filename);
+      console.log('✅ Local Model analysis successful — verdict:', parsedJson.verdict);
+      return res.json(parsedJson);
+    } catch (localError) {
+      console.warn('⚠️ Local Model failed:', localError.message);
+      console.log('Falling back to Cloud APIs...');
+    }
+
+    // ── FALLBACK 1: Try Gemini 1.5 Pro ───────────────────────────────────────
     if (process.env.GEMINI_API_KEY) {
       try {
         console.log('🔍 Attempting Gemini 1.5 Flash analysis...');
@@ -256,7 +298,8 @@ const http = require('http');
 const server = http.createServer(app);
 server.listen(port, () => {
   console.log(`🔬 Audra Labs Intelligence Engine running on port ${port}`);
-  console.log(`   Gemini: ${process.env.GEMINI_API_KEY ? '✅ Active' : '❌ No key'}`);
+  console.log(`   Local PyTorch Model: ✅ Active (Primary)`);
+  console.log(`   Gemini: ${process.env.GEMINI_API_KEY ? '✅ Active (fallback)' : '❌ No key'}`);
   console.log(`   Anthropic: ${process.env.ANTHROPIC_API_KEY ? '✅ Active (fallback)' : '❌ No key'}`);
   console.log(`   Groq:   ${process.env.GROQ_API_KEY ? '✅ Active (fallback)' : '❌ No key'}`);
   console.log(`   MongoDB: connecting in background...`);
