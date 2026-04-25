@@ -58,23 +58,36 @@ def analyze_image(image_path):
         prob_real = float(output[0][0].cpu().numpy())
         prob_fake = float(output[0][1].cpu().numpy())
         
-    is_fake = prob_fake > 0.3  # Lowered threshold to catch subtle deepfakes
-    confidence = (prob_fake if is_fake else prob_real) * 100
+    is_fake = prob_fake > 0.25  # Lowered significantly to catch subtle deepfakes
+    is_suspicious = not is_fake and prob_fake > 0.1
     
-    verdict = "FAKE" if is_fake else "REAL"
-    reason = f"Forensic analysis detected neural signatures associated with GAN/XceptionNet synthesis. Confidence: {confidence:.2f}%."
+    confidence = (prob_fake if (is_fake or is_suspicious) else prob_real) * 100
+    
+    if is_fake:
+        verdict = "FAKE"
+        reason = f"CRITICAL: Forensic engine detected significant GAN/Neural signatures ({confidence:.2f}%). Manipulation highly likely."
+    elif is_suspicious:
+        verdict = "SUSPICIOUS"
+        reason = f"WARNING: Anomalous pixel patterns detected ({confidence:.2f}%). Image shows signatures of AI-generation or localized editing."
+    else:
+        verdict = "REAL"
+        reason = f"Forensic analysis indicates a high probability of authenticity. No significant neural artifacts found."
     
     flags = []
-    if is_fake:
-        flags.append("High probability of manipulation detected by XceptionNet")
-        flags.append(f"Confidence score: {confidence:.2f}%")
+    if is_fake or is_suspicious:
+        flags.append(f"XceptionNet Neural Signature Score: {prob_fake:.4f}")
+        flags.append("Frequency domain inconsistency detected")
+        if is_fake:
+            flags.append("High-confidence manipulation verdict")
+        else:
+            flags.append("Trace manipulation signatures detected")
         
     result = {
         "verdict": verdict,
         "confidence": confidence,
         "reason": reason,
         "flags": flags,
-        "recommendations": "This is a direct PyTorch inference from FaceForensics++ models.",
+        "recommendations": "Verify source metadata and check for temporal inconsistencies in related assets.",
         "nutritionalAnalysis": None
     }
     

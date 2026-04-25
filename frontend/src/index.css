@@ -8,8 +8,9 @@
   --color-danger: #ff3b30;
 
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
+  line-height: 1.4;
   font-weight: 400;
+  font-size: 14px;
 
   color-scheme: light;
   background-color: var(--color-bg);
@@ -70,7 +71,7 @@ a:hover {
 
 /* Base utility classes for typography */
 .text-hero {
-  font-size: clamp(3rem, 8vw, 8rem);
+  font-size: clamp(2rem, 6vw, 6rem);
   font-weight: 800;
   letter-spacing: -0.04em;
   margin: 0;
@@ -84,7 +85,7 @@ a:hover {
 }
 
 .text-title {
-  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   margin: 0;
@@ -110,8 +111,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3rem 1.5rem;
-  max-width: 1400px;
+  padding: 2rem 1.25rem;
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   position: relative;
