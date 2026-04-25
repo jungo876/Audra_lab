@@ -237,6 +237,7 @@ export default function LandingPage({ toolComponent, history = [], loadHistoryIt
               )}
             </div>
 
+            <AnimatePresence>
               {isUserMenuOpen && <motion.div 
                     className="user-tactical-dropdown"
                     initial={{ opacity: 0, y: 15, scale: 0.98 }}
