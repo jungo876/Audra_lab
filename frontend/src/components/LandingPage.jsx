@@ -516,6 +516,16 @@ export default function LandingPage({ toolComponent, history = [], loadHistoryIt
         </motion.div>
       </SectionWrapper>
 
+      {/* 08: Interactive Lab (The App) */}
+      <SectionWrapper className={`lab-section ${isFullWidth ? 'full-width' : ''}`} id="section-08">
+        <div className="lab-header section-centered">
+          <h2 className="text-title">Interactive Lab</h2>
+          <p className="text-body-large">Test the intelligence engine live.</p>
+        </div>
+        <div className="lab-container">
+          {toolComponent}
+        </div>
+      </SectionWrapper>
 
       {/* 02: The Mission */}
       <SectionWrapper className={`section-centered ${isFullWidth ? 'full-width' : ''}`} id="section-02">
@@ -669,16 +679,6 @@ export default function LandingPage({ toolComponent, history = [], loadHistoryIt
         <Carousel />
       </SectionWrapper>
 
-      {/* 08: Interactive Lab (The App) */}
-      <SectionWrapper className={`lab-section ${isFullWidth ? 'full-width' : ''}`} id="section-08">
-        <div className="lab-header section-centered">
-          <h2 className="text-title">Interactive Lab</h2>
-          <p className="text-body-large">Test the intelligence engine live.</p>
-        </div>
-        <div className="lab-container">
-          {toolComponent}
-        </div>
-      </SectionWrapper>
 
       {/* 09: Scalability */}
       <SectionWrapper className={`two-col ${isFullWidth ? 'full-width' : ''}`} id="section-09">
